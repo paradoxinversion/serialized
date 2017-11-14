@@ -1,0 +1,11 @@
+extends layout
+block content
+  form(action="/signup" id="sign-up-form" method="post")
+    input(form="sign-up-form" name="first-name-input" placeholder="First Name" required="true")
+    input(form="sign-up-form" name="last-name-input" placeholder="Last Name" required="true")
+    input(form="sign-up-form" name="screen-name-input" placeholder="Screen Name" required="true")
+    input(form="sign-up-form" name="email-input" placeholder="Email" required="true" type="email")
+    input(form="sign-up-form" name="password-input" placeholder="Password" required="true" type="password")
+    input(form="sign-up-form" name="birthdate-input" placeholder="Birtdhate" required="true" type="date")
+
+    button(form="sign-up-form" type="submit") Submit

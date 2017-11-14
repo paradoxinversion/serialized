@@ -1,0 +1,36 @@
+{
+  "name": "Serialized",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "start": "nodemon",
+    "db:seed":"psql -d serializedTest < database/seed.sql",
+    "db:truncate":"psql -d serializedTest < database/truncateAll.sql"
+  },
+  "keywords": [],
+  "author": "Jedai Saboteur",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg-promise": "^7.0.3",
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "faker": "^4.1.0",
+    "mocha": "^4.0.1",
+    "morgan": "^1.9.0",
+    "pug-lint-config-clock": "^2.0.0"
+  }
+}
