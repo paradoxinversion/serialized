@@ -1,11 +1,19 @@
 extends layout
 block content
-  form(action="/signup" id="sign-up-form" method="post")
-    input(form="sign-up-form" name="first-name-input" placeholder="First Name" required="true")
-    input(form="sign-up-form" name="last-name-input" placeholder="Last Name" required="true")
-    input(form="sign-up-form" name="screen-name-input" placeholder="Screen Name" required="true")
-    input(form="sign-up-form" name="email-input" placeholder="Email" required="true" type="email")
-    input(form="sign-up-form" name="password-input" placeholder="Password" required="true" type="password")
-    input(form="sign-up-form" name="birthdate-input" placeholder="Birtdhate" required="true" type="date")
+  h1 Sign Up
+  form(class="v-form" action="/signup" id="sign-up-form" method="post")
+    label(class="v-form-label") First Name
+      input(form="sign-up-form" name="first-name-input" placeholder="First Name" required="true")
+    label(class="v-form-label") Last Name
+      input(form="sign-up-form" name="last-name-input" placeholder="Last Name" required="true")
+    label(class="v-form-label") Screen Name
+      input(form="sign-up-form" name="screen-name-input" placeholder="Screen Name" required="true")
+    label(class="v-form-label") Email
+      input(form="sign-up-form" name="email-input" placeholder="Email" required="true" type="email")
+    label(class="v-form-label") Password
+      input(form="sign-up-form" name="password-input" placeholder="Password" required="true" type="password")
+    label(class="v-form-label") Birthdate
+      input(form="sign-up-form" name="birthdate-input" placeholder="Birtdhate" required="true" type="date")
 
-    button(form="sign-up-form" type="submit") Submit
+    button(class="btn btn-large" form="sign-up-form" type="submit") Submit
+  p Did you mean to #[a(href="/login") Log in?]

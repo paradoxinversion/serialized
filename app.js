@@ -1,4 +1,5 @@
 // const cookieSession = require("cookie-session");
+const path = require("path");
 const session = require("express-session");
 const express = require("express");
 const morgan = require("morgan");
@@ -8,6 +9,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const index = require("./routes/index");
 const dashboard = require("./routes/dashboard");
+const users = require("./routes/users");
 
 const queries = require("./controllers/queries");
 const app = express();
@@ -64,12 +66,18 @@ app.use(cookieParser());
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static('public'));
+// app.use(express.static('public'));
+app.use(express.static(path.join(__dirname+ '/public')));
 
 app.use("/", index);
 app.use("/dashboard", dashboard);
+app.use("/users", users);
 
 
 app.listen(3000, function(){
   console.log("App Running");
 });
+
+module.exports = {
+  app
+};

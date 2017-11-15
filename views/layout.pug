@@ -1,6 +1,12 @@
 doctype html
 html
   head
-    title Wooo
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Serialized
+    block scripts
+      link(rel="stylesheet" href="/css/reset.css")
+      link(rel="stylesheet" href="/css/style.css")
+      script(src='/js/jquery.js')
   body
+    include includes/nav.pug
     block content

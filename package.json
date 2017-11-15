@@ -6,8 +6,7 @@
   "scripts": {
     "test": "mocha --reporter spec",
     "start": "nodemon",
-    "db:seed":"psql -d serializedTest < database/seed.sql",
-    "db:truncate":"psql -d serializedTest < database/truncateAll.sql"
+    "db:reset_dev": "dropdb serialized_development && createdb serialized_development && psql -d serialized_development < ./database/schema.sql"
   },
   "keywords": [],
   "author": "Jedai Saboteur",
@@ -16,14 +15,17 @@
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
+    "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
+    "jquery": "^3.2.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg-promise": "^7.0.3",
-    "pug": "^2.0.0-rc.4"
+    "pug": "^2.0.0-rc.4",
+    "quill": "^1.3.4"
   },
   "devDependencies": {
     "chai": "^4.1.2",

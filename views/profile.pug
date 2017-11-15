@@ -1,0 +1,20 @@
+//- This view should only be rendered with a supplied profile
+extends layout
+block append scripts
+  link(rel="stylesheet" href="/css/quill.snow.css")
+  script(type="application/javascript", src="/js/quill.min.js")
+  script(src="/js/profile.js")
+block content
+  h1=user.screen_name
+  div(id="bio-container" class="container")
+    if userOwnsProfile
+      button(id="btn-edit-profile" class="btn") Edit Bio
+    if user.biography
+      p(id="bio") #{user.biography} 
+    else
+      p(id="bio") #{user.screen_name} hasn't filled out their bio yet.  
+      
+  div(id="serials-container" class="container")
+    h3 Serials by #{user.screen_name}
+    p No Serials Yet...
+  

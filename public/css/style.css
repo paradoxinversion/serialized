@@ -1,0 +1,141 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  background-color: #f4f5f5;
+}
+nav {
+  display: flex;
+}
+
+h1{
+  font-family: sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+}
+h2{
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+h3{
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+p{
+  font-family: sans-serif;
+
+}
+input {
+  padding: 5px;
+  min-height: 30px;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 20px;
+}
+
+/*
+  Containers
+*/
+.main-content{
+  text-align: center;
+}
+/*
+  Nav
+*/
+.nav{
+  display: flex;
+  background-color: black;
+  height: 40px;
+  border-bottom: 1px solid white;
+}
+.nav-link{
+  padding-right: 1rem;
+  /*padding-top: 1rem;*/
+}
+.logo{
+  margin-right: auto;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  /*padding-top: 1rem;*/
+
+}
+.logo > a{
+  text-decoration: none;
+  color: white;
+}
+
+/*
+  Buttons
+*/
+
+.btn{
+  font-family: sans-serif;
+
+  -webkit-appearance: none;
+  min-height: 18px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.btn-large{
+  -webkit-appearance: none;
+  min-height: 30px;
+  border: 1px solid black;
+  font-size: 18px;
+}
+/*
+  Containers
+*/
+.site-container{
+  margin: 0 auto;
+  width: 90%;
+}
+/*
+  Forms
+*/
+.h-form {
+  display: flex;
+
+}
+.h-form-label{
+  margin-right: 1rem;
+}
+
+.v-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.v-form-label{
+  font-family: sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 24px;
+}
+
+/*
+  Images
+*/
+.hero-image-container{
+  /*background-color: red;*/
+  background-image: url('../img/typing.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 300px;
+  border-bottom: 1px solid black;
+  margin-bottom: 1rem;
+}
+.hero-image{
+  width: 100%;
+}
+
+.container{
+  margin: 1rem 0;
+}

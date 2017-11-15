@@ -1,6 +1,12 @@
 extends layout
 block content
-  form(action="/login" id="log-in-form" method="post")
-    input(form="log-in-form" name="email-input" placeholder="Email" required="true")
-    input(form="log-in-form" name="password-input" placeholder="Password" required="true" type="password")
-    button(form="log-in-form" type="submit") Sign In
+  header
+    h1 Log In
+  form(class="v-form" action="/login" id="log-in-form" method="post")
+    label(class="v-form-label") Email
+      input(form="log-in-form" name="email-input" placeholder="Email" required="true")
+    label(class="v-form-label") Password  
+      input(form="log-in-form" name="password-input" placeholder="Password" required="true" type="password")
+    button(class="btn btn-large" form="log-in-form" type="submit") Sign In
+  p Did you need to #[a(href="/signup") Sign Up?]
+  script(src="../js/login.js")

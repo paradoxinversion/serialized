@@ -29,18 +29,28 @@ const getUserById = function(id){
 
 // Adds a new user, returning the user.
 const addNewUser = function(screenName, email, pass, fName, lName, birthdate ){
-  const sql =`INSERT INTO users(screen_name, email, first_name, last_name, password,
-  birthdate, join_date)
-  VALUES ($1, $2, $3, $4, $5, $6, now()) RETURNING *`;
   return db.oneOrNone(
     `
       SELECT users.email FROM users WHERE users.email=$1
-    `,[email])
+    `
+    ,[email])
     .then(userEmail=>{
 
       if (userEmail === null){
         return bcrypt.hash(pass, saltRounds).then(function(hashedPass){
-          return db.one(sql, [screenName, email, fName, lName, hashedPass, birthdate])
+          return db.one(
+            `
+            INSERT INTO users(screen_name, email, first_name, last_name, password,
+            birthdate, join_date)
+            VALUES ($1, $2, $3, $4, $5, $6, now()) RETURNING *
+            `
+            , [screenName, email, fName, lName, hashedPass, birthdate])
+            .then(newUser =>{
+              return setUserRole(newUser, 2)
+                .catch(e => {
+                  throw e;
+                });
+            })
             .catch((e) =>{
               throw e;
             });
@@ -52,4 +62,40 @@ const addNewUser = function(screenName, email, pass, fName, lName, birthdate ){
     });
 };
 
-module.exports = {addNewUser, getUserByEmail, getUserById, checkUserCredentials};
+//Grants a user a new role
+const setUserRole = function(user, newRole){
+  return db.query(
+    `
+      INSERT INTO users_roles
+      VALUES ($1, $2)
+    `,
+    [user.id, newRole]
+  );
+};
+
+const getUserRole = function(user){
+  return db.query(
+    `
+      SELECT role FROM users_roles WHERE users_roles.user_id=$1
+    `,
+    [user.id]
+  );
+};
+
+const getUserBiography = function(user){
+  return db.oneOrNone(
+    `
+      SELECT biography FROM users WHERE users.id=$1
+    `,
+    [user.id]
+  );
+}
+module.exports = {
+  addNewUser,
+  getUserByEmail,
+  getUserById,
+  checkUserCredentials,
+  setUserRole,
+  getUserRole,
+  getUserBiography
+};

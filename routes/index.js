@@ -10,17 +10,23 @@ router.get("/", function(req, res){
 router.route("/login")
   .get(function(req, res){
     res.render("log-in");
-  });
+  })
+  .post(
+    passport.authenticate('local', {
+      failureRedirect: '/login' }),
+    function(req, res){
+      res.redirect('/dashboard');
+    });
+//
+// router.post("/login", passport.authenticate('local', {
+//   successRedirect: '/dashboard',
+//   failureRedirect: '/login' }));
 
-router.post("/login", passport.authenticate('local', {
-  successRedirect: '/yay',
-  failureRedirect: '/boo' }));
 router.route("/signup")
-  .get( function(req, res){
+  .get(function(req, res){
     res.render("sign-up");
   })
-  .post( function(req, res){
-    console.log(req.body);
+  .post(function(req, res){
     const user = req.body;
     return queries.addNewUser(
       user['screen-name-input'],
@@ -31,7 +37,7 @@ router.route("/signup")
       user['birthdate-input']
     )
       .then(() =>{
-        res.send("Sign Up Succeeded");
+        res.redirect("/dashboard");
       });
     // res.send("Logged in action");
   });

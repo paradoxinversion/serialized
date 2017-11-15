@@ -6,7 +6,8 @@ CREATE TABLE users(
   last_name CHAR(60) NOT NULL,
   password VARCHAR NOT NULL,
   birthdate DATE NOT NULL,
-  join_date DATE NOT NULL
+  join_date DATE NOT NULL,
+  biography VARCHAR
 );
 
 CREATE TABLE genres(
@@ -14,11 +15,12 @@ CREATE TABLE genres(
   genre VARCHAR
 );
 CREATE TABLE roles(
-  role VARCHAR PRIMARY KEY
+  id SERIAL PRIMARY KEY,
+  role VARCHAR NOT NULL
 );
 CREATE TABLE users_roles(
   user_id INT REFERENCES users(id),
-  role VARCHAR REFERENCES roles(role)
+  role_id INT REFERENCES roles(id)
 );
 
 CREATE TABLE serials(
@@ -86,3 +88,10 @@ CREATE TABLE serials_comments(
    user_id INT REFERENCES users(id),
    serial_id INT REFERENCES serials(id)
  );
+
+ INSERT INTO
+   roles(role)
+ VALUES
+   ('Administrator'),
+   ('Reader'),
+   ('Author')
