@@ -59,6 +59,9 @@ const addNewUser = function(screenName, email, pass, fName, lName, birthdate ){
         const error = new Error("user already exists");
         throw error;
       }
+    })
+    .catch(error => {
+      throw error;
     });
 };
 
@@ -70,7 +73,10 @@ const setUserRole = function(user, newRole){
       VALUES ($1, $2)
     `,
     [user.id, newRole]
-  );
+  )
+    .catch(error => {
+      throw error;
+    });
 };
 
 const getUserRole = function(user){
@@ -79,7 +85,10 @@ const getUserRole = function(user){
       SELECT role FROM users_roles WHERE users_roles.user_id=$1
     `,
     [user.id]
-  );
+  )
+    .catch(error => {
+      throw error;
+    });
 };
 
 const getUserBiography = function(user){
@@ -88,8 +97,22 @@ const getUserBiography = function(user){
       SELECT biography FROM users WHERE users.id=$1
     `,
     [user.id]
-  );
-}
+  )
+    .catch(error => {
+      throw error;
+    });
+};
+
+const updateUserBiography = function(userId, newText){
+  return db.oneOrNone('UPDATE users SET biography = $1 WHERE id=$2 RETURNING *', [newText, userId])
+    .then(user => {
+      console.log(user);
+      return user;
+    })
+    .catch(error => {
+      throw error;
+    });
+};
 module.exports = {
   addNewUser,
   getUserByEmail,
@@ -97,5 +120,6 @@ module.exports = {
   checkUserCredentials,
   setUserRole,
   getUserRole,
-  getUserBiography
+  getUserBiography,
+  updateUserBiography
 };

@@ -4,7 +4,7 @@ const passport = require("passport");
 const router = express.Router();
 
 router.get("/", function(req, res){
-  res.render("index");
+  res.render("index", {user:req.user});
 });
 
 router.route("/login")

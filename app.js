@@ -72,8 +72,21 @@ app.use(express.static(path.join(__dirname+ '/public')));
 app.use("/", index);
 app.use("/dashboard", dashboard);
 app.use("/users", users);
+app.use(function(req, res, next){
+  const err = new Error("Resource not Found");
+  err.status = 404;
+  next(err);
+});
 
-
+app.use(function(error, req, res, next){
+  res.status(error.status || 500);
+  res.json({
+    error:{
+      message: error.message
+    }
+  })
+  next(error);
+});
 app.listen(3000, function(){
   console.log("App Running");
 });

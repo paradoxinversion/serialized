@@ -52,6 +52,8 @@ input {
 }
 .nav-link{
   padding-right: 1rem;
+  color: white;
+  text-decoration: none;
   /*padding-top: 1rem;*/
 }
 .logo{

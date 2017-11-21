@@ -7,13 +7,12 @@ block append scripts
 block content
   h1=user.screen_name
   div(id="bio-container" class="container")
-    if userOwnsProfile
-      button(id="btn-edit-profile" class="btn") Edit Bio
     if user.biography
       p(id="bio") #{user.biography} 
     else
       p(id="bio") #{user.screen_name} hasn't filled out their bio yet.  
-      
+    if userOwnsProfile
+      button(id="btn-edit-profile" class="btn") Edit Bio
   div(id="serials-container" class="container")
     h3 Serials by #{user.screen_name}
     p No Serials Yet...

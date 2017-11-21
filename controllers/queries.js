@@ -3,7 +3,8 @@ const {
   addNewUser,
   checkUserCredentials,
   getUserById,
-  getUserBiography
+  getUserBiography,
+  updateUserBiography
 } = require("../database/queries");
 
 module.exports = {
@@ -11,5 +12,6 @@ module.exports = {
   addNewUser,
   checkUserCredentials,
   getUserById,
-  getUserBiography
+  getUserBiography,
+  updateUserBiography
 };
