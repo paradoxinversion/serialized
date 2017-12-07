@@ -1,19 +1,25 @@
 //- This view should only be rendered with a supplied profile
 extends layout
+block scripts
+  link(rel="stylesheet" href="/css/profile.css")
+    
 block append scripts
   link(rel="stylesheet" href="/css/quill.snow.css")
   script(type="application/javascript", src="/js/quill.min.js")
   script(src="/js/profile.js")
+    
 block content
-  h1=user.screen_name
-  div(id="bio-container" class="container")
-    if user.biography
-      p(id="bio") #{user.biography} 
-    else
-      p(id="bio") #{user.screen_name} hasn't filled out their bio yet.  
-    if userOwnsProfile
-      button(id="btn-edit-profile" class="btn") Edit Bio
-  div(id="serials-container" class="container")
-    h3 Serials by #{user.screen_name}
-    p No Serials Yet...
+  div(class="container")
+    h1=user.username
+    div(id="bio-container")
+      if user.biography
+        p(id="bio") #{user.biography} 
+      else
+        p(id="bio") #{user.username} hasn't filled out their bio yet.  
+      if isOwnedProfile
+        button(id="btn-edit-profile" class="btn") Edit Bio
+    div(id="serials-container")
+      h3 Serials by #{user.username}
+      p No Serials Yet...
+
   

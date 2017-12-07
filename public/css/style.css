@@ -38,8 +38,18 @@ input {
 /*
   Containers
 */
-.main-content{
-  text-align: center;
+
+.container{
+  margin: 1rem 0;
+}
+
+.fluid-container{
+  margin: 0 1rem;
+}
+
+.site-container{
+  margin: 0 auto;
+  width: 90%;
 }
 /*
   Nav
@@ -47,14 +57,13 @@ input {
 .nav{
   display: flex;
   background-color: black;
-  height: 40px;
+  min-height: 40px;
   border-bottom: 1px solid white;
 }
 .nav-link{
   padding-right: 1rem;
   color: white;
   text-decoration: none;
-  /*padding-top: 1rem;*/
 }
 .logo{
   margin-right: auto;
@@ -68,7 +77,9 @@ input {
   text-decoration: none;
   color: white;
 }
-
+.nav-bar-top > .icon{
+  display: none;
+}
 /*
   Buttons
 */
@@ -88,13 +99,7 @@ input {
   border: 1px solid black;
   font-size: 18px;
 }
-/*
-  Containers
-*/
-.site-container{
-  margin: 0 auto;
-  width: 90%;
-}
+
 /*
   Forms
 */
@@ -125,7 +130,6 @@ input {
   Images
 */
 .hero-image-container{
-  /*background-color: red;*/
   background-image: url('../img/typing.jpg');
   background-size: cover;
   background-position: center;
@@ -137,7 +141,34 @@ input {
 .hero-image{
   width: 100%;
 }
+/*
+  To Name?
+  */
+.centered-text {
+  text-align: center;
+}
 
-.container{
-  margin: 1rem 0;
+@media screen and (max-width: 500px){
+  .nav-bar-top a:not(:last-child){
+    display: none;
+  }
+  .nav-bar-top > a.icon{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .nav {
+    flex-direction: column;
+  }
+  .nav-bar-top.responsive a:not(:last-child){
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-bar-top > a.icon{
+    display: block;
+  }
+  .nav-link{
+    margin-right: 1rem;
+  }
 }

@@ -1,0 +1,23 @@
+input {
+  padding: 5px;
+  min-height: 30px;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 20px;
+}
+
+.v-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.v-form-label{
+  font-family: sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 24px;
+}

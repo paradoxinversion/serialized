@@ -1,39 +1,45 @@
-const path = require("path");
 const express = require("express");
-const queries = require("../controllers/queries");
 const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
-
-// const passport = require("passport");
-// const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn();
+const User = require("../database/mongo/user");
 const router = express.Router();
 
-router.get("/profile/:userId", function(req, res){
-  queries.getUserById(req.params.userId)
+router.get("/profile/:username", function(req, res){
+  User.findOne({username: req.params.username})
+    .then(async (user) => {
+      let isOwnedProfile;
+      //if the session user matches the user who's page we're on
+      if (req.session.passport.user){
+        isOwnedProfile = true;
+      }else{
+        isOwnedProfile = false;
+      }
+      res.render("profile", {user, isOwnedProfile});
+    })
+    .catch(e => {
+      throw e;
+    });
+});
+
+router.put("/profile/:username", ensureLoggedIn(), function(req, res){
+  User.findByIdAndUpdate(req.session.passport.user, { $set: { biography: req.body.text }}, { new: true, upsert: true })
     .then(user => {
-      let userOwnsProfile;
-      if (req.user){
-        if (req.params.userId == req.user.id){
-          userOwnsProfile = true;
-        }else{
-          userOwnsProfile = false;
-        }
-      }
-
-      res.render("profile", {user, userOwnsProfile});
-    });
-
-});
-
-router.put("/profile/:userId", ensureLoggedIn(), function(req, res){
-  queries.updateUserBiography(req.session.passport.user, req.body.text)
-    .then((userData) =>{
-      if (userData){
-        res.end();
-      } else{
-        res.end();
-      }
+      res.send(user);
     });
 });
 
+router.get("/:pageIndex", function(req, res){
 
+  let user;
+  if (req.session.passport && req.session.passport.user){
+    user = req.session.passport.user;
+  }
+  User.find()
+    .then(users => {
+      res.render("users", {user, users});
+    })
+    .catch(error => {
+      throw error;
+    });
+
+});
 module.exports = router;

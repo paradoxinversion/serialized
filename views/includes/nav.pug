@@ -1,8 +1,11 @@
-div(class="nav")
-  p(class="logo") #[a(href="/") Serialized]
-  nav
-    if user
-      a(class="nav-link" href="/dashboard") Dashboard
-    else
-      a(class="nav-link" href="/signup") Sign Up
-      a(class="nav-link" href="/login") Log In
+nav(class="nav nav-bar-top" id="main-nav")
+  a(class="logo" href="/") Serialized
+  a(href="javascript:void(0);" id="menu-toggle" class="nav-toggle") &#9776
+  if user
+    a(class="nav-link" href="/logout") Log Out
+    a(class="nav-link" href="/dashboard") Dashboard
+  else
+    a(class="nav-link" href="/signup") Sign Up
+    a(class="nav-link" href="/login") Log In
+  
+  a(class="nav-link" href="/users/0") Browse Users

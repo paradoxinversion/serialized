@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  div.container
+    h1 Users
+    each val in users
+      div.query-result
+        a(href=`profile/${val.username}`)= val.username

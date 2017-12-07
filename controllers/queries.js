@@ -4,7 +4,8 @@ const {
   checkUserCredentials,
   getUserById,
   getUserBiography,
-  updateUserBiography
+  updateUserBiography,
+  getUsers
 } = require("../database/queries");
 
 module.exports = {
@@ -13,5 +14,6 @@ module.exports = {
   checkUserCredentials,
   getUserById,
   getUserBiography,
-  updateUserBiography
+  updateUserBiography,
+  getUsers
 };

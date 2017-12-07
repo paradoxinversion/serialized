@@ -1,6 +1,13 @@
 extends layout
+block scripts
+  link(rel="stylesheet" href="/css/dashboard.css")
 block content
-  header 
-    h2 Dashboard
-  div(class="dashboard-nav")
-    a(href="users/profile/" + user.id) My Profile
+  div.container
+    header 
+      h1.centered-text Dashboard
+    div(class="dashboard-nav")
+      a(class="btn" href="users/profile/" + user.username) My Profile
+      a(class="btn" href="serials/" + user.username) My Serials
+      a(class="btn" href="#") My Account
+    div
+      p Welcome to your Dashboard. You have no activity. It is a barren wasteland.

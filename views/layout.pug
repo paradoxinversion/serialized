@@ -3,10 +3,15 @@ html
   head
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Serialized
+    script(src='/js/verge.js')
+    script(src='/js/jquery.js')
+    link(rel="stylesheet" href="/css/reset.css")
+    link(rel="stylesheet" href="/css/common-styles.css")
+
     block scripts
-      link(rel="stylesheet" href="/css/reset.css")
-      link(rel="stylesheet" href="/css/style.css")
-      script(src='/js/jquery.js')
+      
   body
     include includes/nav.pug
     block content
+    include includes/footer.pug
+    

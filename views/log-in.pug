@@ -1,12 +1,15 @@
 extends layout
+block scripts
+  link(rel="stylesheet" href="/css/authentication.css")
 block content
-  header
-    h1 Log In
-  form(class="v-form" action="/login" id="log-in-form" method="post")
-    label(class="v-form-label") Email
-      input(form="log-in-form" name="email-input" placeholder="Email" required="true")
-    label(class="v-form-label") Password  
-      input(form="log-in-form" name="password-input" placeholder="Password" required="true" type="password")
-    button(class="btn btn-large" form="log-in-form" type="submit") Sign In
-  p Did you need to #[a(href="/signup") Sign Up?]
-  script(src="../js/login.js")
+  div.container
+    header
+      h1 Log In
+    form(class="v-form" action="/login" id="log-in-form" method="post")
+      label(class="v-form-label") Email
+        input(form="log-in-form" id="email" name="email" placeholder="Email" required="true")
+      label(class="v-form-label") Password  
+        input(form="log-in-form" id="password" name="password" placeholder="Password" required="true" type="password")
+      button(class="btn btn-large" form="log-in-form" type="submit") Sign In
+    p Did you need to #[a(href="/signup") Sign Up?]
+    script(src="../js/login.js")

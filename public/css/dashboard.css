@@ -1,0 +1,15 @@
+.dashboard-nav{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
+  margin: 8px 0;
+  background-color: #aeb0b5;
+  border: 1px solid #212121;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 500px){
+  .dashboard-nav{
+    flex-direction: row;
+  }
+}

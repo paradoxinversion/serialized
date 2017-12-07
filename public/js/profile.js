@@ -12,6 +12,7 @@ $(function(){
     saveButton = document.createElement("button");
     saveButton.innerHTML = "Save";
     saveButton.id = "btn-save-profile";
+    saveButton.className = "btn";
 
     saveButton.addEventListener("click", function(){
       console.log(window.location.href);
@@ -20,6 +21,9 @@ $(function(){
         profileText = {
           text: quill.getText(0)
         };
+        const regex = /\\n/g;
+        // profileText.text = profileText.text.replace(regex, "<br>");
+
         fetch(window.location.href, {
           method: 'PUT',
           body: JSON.stringify(profileText),
